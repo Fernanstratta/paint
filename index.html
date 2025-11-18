@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paint App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Paint</h1>
+            <p>Implementé el pseudo-3D del movimiento del mouse, tutto funziona bene.</p>
+        </div>
+
+        <div class="main-content">
+            <div class="toolbar">
+                
+                <div class="tool-section">
+                    <h3>Herramientas</h3>
+                    <div class="tool-buttons">
+                        <button class="tool-btn" data-tool="line">Línea</button>
+                        <button class="tool-btn" data-tool="rectangle">▭ Rectángulo</button>
+                        <button class="tool-btn" data-tool="circle">○ Círculo</button>
+                        <button class="tool-btn" data-tool="bezier2">〰️ Bézier 2</button>
+                        <button class="tool-btn" data-tool="bezier3">〰️ Bézier 3</button>
+                        <button class="tool-btn active" data-tool="select">Seleccionar</button>
+                    </div>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="tool-section">
+                    <h3>Colores</h3>
+                    <div class="color-input-group">
+                        <label>Trazo:</label>
+                        <input type="color" id="strokeColor" value="#000000">
+                    </div>
+
+                    <div class="color-input-group" style="margin-top:10px;">
+                        <label>Relleno:</label>
+                        <input type="color" id="fillColor" value="#ff0000">
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="useFill">
+                        <label for="useFill">Usar relleno</label>
+                    </div>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="tool-section">
+                    <h3>Grosor de línea</h3>
+                    <input type="range" id="lineWidth" min="1" max="20" value="2">
+                    <div style="text-align:center; margin-top:8px; font-size:13px; color:#666;">
+                        <span id="lineWidthValue">2</span> px
+                    </div>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="tool-section">
+                    <h3>Algoritmo</h3>
+                    <select id="algorithm" style="width:100%; padding:10px; border:2px solid #ddd; border-radius:8px;">
+                        <option value="bresenham">Bresenham</option>
+                        <option value="dda">DDA</option>
+                        <option value="native">Nativo Canvas</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <div class="canvas-container">
+                <canvas id="canvas" width="1000" height="600"></canvas>
+
+                <div class="action-buttons">
+                    <button class="action-btn danger" id="clearBtn">Limpiar Canvas</button>
+                    <button class="action-btn success" id="exportImgBtn">Exportar Imagen</button>
+                    <button class="action-btn primary" id="exportJsonBtn">Exportar JSON</button>
+                    <button class="action-btn primary" id="importJsonBtn">Importar JSON</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <input type="file" id="jsonFileInput" accept=".json" style="display:none;">
+
+    <script type="module" src="main.js"></script>
+</body>
+</html>
